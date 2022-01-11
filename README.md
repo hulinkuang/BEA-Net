@@ -7,5 +7,4 @@ keras-base=2.2.2
 medpy
 
 # run_demo
-downloaded the trained model for skin lesion segmentation on ISIC2018 dataset
-run Test_and_Evaluate_Demo.py
+downloaded the trained model for skin lesion segmentation on ISIC2018 dataset via (https://pan.baidu.com/s/1mmplaQPB1No9c4Qcwl0_pQ) using password "bibm", and then run Test_and_Evaluate_Demo.py
