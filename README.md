@@ -9,5 +9,10 @@ keras-base=2.2.2
 
 medpy
 
+openCV
+
 # Datasets
-ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018) and then train_BEG_SegNet.py to train the model, and run evaluate1_BEG_SEGNET.py to evluate the trained model on the test set and compute evaluation metrics.
+ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018). put all RGB images and its lesion GT images into a folder "./dataset_isic18/" . run the Prepare_data_ISIC2018.py to prepare the needed .npy files for training and testing
+
+# run train, test and evaluation
+and then train_BEG_SegNet.py to train the model, and run evaluate1_BEG_SEGNET.py to evluate the trained model on the test set and compute evaluation metrics.
