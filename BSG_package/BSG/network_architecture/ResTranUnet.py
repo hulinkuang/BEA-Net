@@ -17,7 +17,7 @@ class U_ResTran3D(nn.Module):
                              n_layer=5, convolutional_upsampling=True)
 
     def forward(self, inputs):
-        # # %%%%%%%%%%%%% CoTr
+        # # %%%%%%%%%%%%% Body-Edge Segmentation Network
         B, C, D, H, W = inputs.shape
         x = inputs.squeeze(2)
         # x = F.interpolate(x, size=(256, 256), mode='bilinear')
