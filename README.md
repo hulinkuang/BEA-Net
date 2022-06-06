@@ -34,6 +34,9 @@ cd BSG_package/BSG/run
 # Datasets
 ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018). There is an example to process raw data in ./BSG-package/BSG/demo/turial.py.
 
+For other datasets, the preprocess files can be found at nnUNet/nnunet/dataset_conversion. All pre-trained model can be download from 链接：https://pan.baidu.com/s/1o9pKTCzsJW6CzCxFTZ8DTg 
+提取码：7uvl
+
 
 ### Acknowledgements
 Part of codes are reused from the nnU-Net. Thanks to Fabian Isensee for the codes of nnU-Net.
