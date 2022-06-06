@@ -23,12 +23,12 @@ cd BSG_package
 pip install -e .
 ```
 
-### 2. Training 
+### 1. Training 
 cd BSG_package/BSG/run
 
 * Run `python run_training.py -gpu='0' -outpath='BSG'` for training.
 
-### 3. Testing 
+### 2. Testing 
 * Run `python run_training.py -gpu='0' -outpath='BSG' -val --val_folder='validation_output'` for validation.
 
 # Datasets
