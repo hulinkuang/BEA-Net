@@ -1,18 +1,41 @@
 # BEG-SegNet
 The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEG-SegNet: Medical Image Segmentation Network with Body and Edge Generation"
-# requirments
-python=3.5.6 
+## Requirements
+CUDA 11.4<br />
+Python 3.8.12<br /> 
+Pytorch 1.11.0<br />
+Torchvision 0.12.0<br />
+batchgenerators 0.21<br />
+SimpleITK 2.1.1 <br />
+scipy 1.8.0 <br />
+kornia 0.6.4 <br />
 
-tensorflow-gpu=1.9 
+## Usage
 
-keras-base=2.2.2 
+### 0. Installation
+* Install nnUNet and BSG as below
+  
+```
+cd nnUNet
+pip install -e .
 
-medpy
+cd BSG_package
+pip install -e .
+```
 
-openCV
+### 2. Training 
+cd BSG_package/BSG/run
+
+* Run `python run_training.py -gpu='0' -outpath='BSG'` for training.
+
+### 3. Testing 
+* Run `python run_training.py -gpu='0' -outpath='BSG' -val --val_folder='validation_output'` for validation.
 
 # Datasets
-ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018). put all RGB images and its lesion GT images into a folder "./dataset_isic18/" . run the Prepare_data_ISIC2018.py to prepare the needed .npy files for training and testing
+ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018). There is an example to process raw data in ./BSG-package/BSG/demo/turial.py.
 
-# run train, test and evaluation
-and then train_BEG_SegNet.py to train the model, and run evaluate1_BEG_SEGNET.py to evluate the trained model on the test set and compute evaluation metrics.
+
+### Acknowledgements
+Part of codes are reused from the nnU-Net. Thanks to Fabian Isensee for the codes of nnU-Net.
+
+
