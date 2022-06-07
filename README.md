@@ -33,10 +33,10 @@ ISIC2018 dataset for skin lesion segmentation can be downloaded from (https://ch
 
 * Run `BEA_train -gpu='0' -task={task_id} -outpath='BEA'` for training.
 
-### 2.3 Testing 
+### 1.3 Testing 
 * Run `BEA_train -gpu='0' -task={task_id} -outpath='BEA' -val --val_folder='validation_output'` for testing. 
 
-### 2.4 Testing demo with pre-trained model
+### 1.4 Testing demo with pre-trained model
 The pre-trained model using ISIC2018 can be download from [[Baidu YUN]](https://pan.baidu.com/s/1o9pKTCzsJW6CzCxFTZ8DTg) with the password "7uvl". We give a testing demo which can segment raw images with skin lesions and is implemented via running ./BEA-package/BEA/demo/turial.py.
 
 ### 2 Medical segmentation on other five datasets
