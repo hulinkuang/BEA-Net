@@ -52,9 +52,9 @@ To pre-process the datasets, please use the corresponding preprocess codes in nn
 ### 2.2 pre-trained model
 All pre-trained models on the other five datasets also can be download from [[Baidu YUN]](https://pan.baidu.com/s/1o9pKTCzsJW6CzCxFTZ8DTg) with the password "7uvl".
 
-### Acknowledgements
+## Acknowledgements
 Part of codes are reused from the nnU-Net. Thanks to Fabian Isensee for the codes of nnU-Net.
 
-### Citations
+## Citations
 if you use this code, please cite the following paper:
 [1] Hulin Kuang, Yixiong Liang, Ning Liu, Jin Liu, Jianxin Wang, “BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation”, in Proc. of 2021 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2021, pp. 939-944. 
