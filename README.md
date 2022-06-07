@@ -1,5 +1,5 @@
 # BEA-Net
-The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEA-Net: Body and Edge Aware Network with Multi-Scale Short-Term Concatenation for Medical Image Segmentation"
+The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEA-Net: Body and Edge Aware Network with Multi-Scale Short-Term Concatenation for Medical Image Segmentation" <br />
 This paper proposes a new network with body and edge generation modules, multi-scale short-term concatenation, parallel body and edge decoders and their fusion, and body and edge supervision. It outperform several state-of-the-arts on six datasets for six different medical image segmentation tasks.
 ## Requirements
 CUDA 11.4<br />
@@ -38,11 +38,11 @@ The pre-trained model using ISIC2018 can be download from [[Baidu YUN]](https://
 
 ### 2 Medical segmentation on other five datasets
 ### Dataset access
-Kvasir-SEG: https://datasets.simula.no/kvasir-seg/
-IDRiD: https://idrid.grand-challenge.org/
-BUSI: https://scholar.cu.edu.eg/?q=afahmy/pages/dataset
-Pancreas-CT: https://wiki.cancerimagingarchive.net/display/Public/Pancreas-CT
-ASID: https://github.com/GriffinLiang/AISD
+Kvasir-SEG: https://datasets.simula.no/kvasir-seg/  <br />
+IDRiD: https://idrid.grand-challenge.org/  <br />
+BUSI: https://scholar.cu.edu.eg/?q=afahmy/pages/dataset   <br />
+Pancreas-CT: https://wiki.cancerimagingarchive.net/display/Public/Pancreas-CT  <br />
+ASID: https://github.com/GriffinLiang/AISD <br />
 
 ### 2.1 pre-processing, training and testing
 To pre-process the datasets, please use the corresponding preprocess codes in nnUNet/nnunet/dataset_conversion. the training and testing for other datasets are similar.
