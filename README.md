@@ -1,6 +1,9 @@
 # BEA-Net
 The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEA-Net: Body and Edge Aware Network with Multi-Scale Short-Term Concatenation for Medical Image Segmentation" <br />
 This paper proposes a new network with body and edge generation modules, multi-scale short-term concatenation, parallel body and edge decoders and their fusion, and body and edge supervision. It outperform several state-of-the-arts on six datasets for six different medical image segmentation tasks.
+![framework](https://user-images.githubusercontent.com/35280235/172337360-34553fff-ed5c-4e72-90e0-f92bceff9d37.jpg)
+
+
 ## Requirements
 CUDA 11.4<br />
 Python 3.8.12<br /> 
@@ -52,4 +55,6 @@ All pre-trained models on the other five datasets also can be download from [[Ba
 ### Acknowledgements
 Part of codes are reused from the nnU-Net. Thanks to Fabian Isensee for the codes of nnU-Net.
 
-
+### Citations
+if you use this code, please cite the following paper:
+[1] Hulin Kuang, Yixiong Liang, Ning Liu, Jin Liu, Jianxin Wang, “BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation”, in Proc. of 2021 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2021, pp. 939-944. 
