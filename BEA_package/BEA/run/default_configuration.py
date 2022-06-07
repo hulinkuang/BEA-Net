@@ -1,4 +1,5 @@
 import nnunet
+import BEA
 from nnunet.paths import network_training_output_dir, preprocessing_output_dir, default_plans_identifier
 from batchgenerators.utilities.file_and_folder_operations import *
 from nnunet.experiment_planning.summarize_plans import summarize_plans
@@ -17,8 +18,8 @@ def get_configuration_from_output_folder(folder):
 
 
 def get_default_configuration(outname, network, task, network_trainer, plans_identifier=default_plans_identifier,
-                              search_in=(nnunet.__path__[0], "training", "network_training"),
-                              base_module='nnunet.training.network_training'):
+                              search_in=(BEA.__path__[0], "training", "network_training"),
+                              base_module='BEA.training.network_training'):
     assert network in ['2d', '3d_lowres', '3d_fullres', '3d_cascade_fullres'], \
         "network can only be one of the following: \'3d\', \'3d_lowres\', \'3d_fullres\', \'3d_cascade_fullres\'"
 

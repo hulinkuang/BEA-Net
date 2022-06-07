@@ -26,9 +26,9 @@ default_cascade_trainer = "nnUNetTrainerV2CascadeFullRes"
 PLEASE READ paths.md FOR INFORMATION TO HOW TO SET THIS UP
 """
 
-os.environ['nnUNet_raw_data_base'] = "/home/kuanghl/Codes/BSG/nnUNet/nnU_data/nnUNet_raw_data_base"
-os.environ['nnUNet_preprocessed'] = "/home/kuanghl/Codes/BSG/nnUNet/nnU_data/nnUNet_raw_data_base/processed_data"
-os.environ['RESULTS_FOLDER'] = "/home/kuanghl/Codes/BSG/nnUNet/result"
+os.environ['nnUNet_raw_data_base'] = "/homeb/wyh/Codes/BEA-Net/nnUNet/nnU_data/nnUNet_raw_data_base"
+os.environ['nnUNet_preprocessed'] = "/homeb/wyh/Codes/BEA-Net/nnUNet/nnU_data/nnUNet_raw_data_base/processed_data"
+os.environ['RESULTS_FOLDER'] = "/homeb/wyh/Codes/BEA-Net/nnUNet/result"
 
 base = os.environ['nnUNet_raw_data_base'] if "nnUNet_raw_data_base" in os.environ.keys() else None
 preprocessing_output_dir = os.environ['nnUNet_preprocessed'] if "nnUNet_preprocessed" in os.environ.keys() else None

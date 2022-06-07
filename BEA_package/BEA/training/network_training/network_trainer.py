@@ -18,7 +18,7 @@ from typing import Tuple
 
 import matplotlib
 from batchgenerators.utilities.file_and_folder_operations import *
-from BSG.network_architecture.neural_network import SegmentationNetwork
+from BEA.network_architecture.neural_network import SegmentationNetwork
 from sklearn.model_selection import KFold
 from torch import nn
 from torch.cuda.amp import GradScaler, autocast
@@ -37,7 +37,7 @@ from abc import abstractmethod
 from datetime import datetime
 from tqdm import trange
 from nnunet.utilities.to_torch import maybe_to_torch, to_cuda
-from BSG.training.network_training.early_stop import EarlyStopping
+from BEA.training.network_training.early_stop import EarlyStopping
 
 
 class NetworkTrainer(object):

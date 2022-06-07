@@ -5,8 +5,8 @@
 import argparse
 import os
 
-import BSG
-from BSG.run.default_configuration import get_default_configuration
+import BEA
+from BEA.run.default_configuration import get_default_configuration
 from batchgenerators.utilities.file_and_folder_operations import *
 from nnunet.paths import default_plans_identifier
 from nnunet.training.cascade_stuff.predict_next_stage import predict_next_stage
@@ -21,7 +21,7 @@ def main():
     parser.add_argument("-network_trainer", type=str, default='nnUNetTrainerV2_ResTrans')
     parser.add_argument("-task", type=str, default='018', help="can be task name or task id")
     parser.add_argument("-fold", type=str, default='all', help='0, 1, ..., 5 or \'all\'')
-    parser.add_argument("-outpath", type=str, default='BSG_1', help='output path')
+    parser.add_argument("-outpath", type=str, default='BEA_1', help='output path')
     parser.add_argument("-norm_cfg", type=str, default='IN', help='BN, IN or GN')
     parser.add_argument("-activation_cfg", type=str, default='LeakyReLU', help='LeakyReLU or ReLU')
 
@@ -96,8 +96,8 @@ def main():
 
     plans_file, output_folder_name, dataset_directory, batch_dice, stage, \
     trainer_class = get_default_configuration(outpath, network, task, network_trainer, plans_identifier, \
-                                              search_in=(BSG.__path__[0], "training", "network_training"), \
-                                              base_module='BSG.training.network_training')
+                                              search_in=(BEA.__path__[0], "training", "network_training"), \
+                                              base_module='BEA.training.network_training')
 
     trainer = trainer_class(plans_file, fold, norm_cfg, activation_cfg, output_folder=output_folder_name,
                             dataset_directory=dataset_directory,

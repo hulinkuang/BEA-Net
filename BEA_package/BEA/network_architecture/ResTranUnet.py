@@ -1,10 +1,10 @@
 # ------------------------------------------------------------------------
-# BSG
+# BEA
 # ------------------------------------------------------------------------
 import torch.nn as nn
 import torch.nn.functional as F
-from BSG.network_architecture.bsg import UNet
-from BSG.network_architecture.neural_network import SegmentationNetwork
+from BEA.network_architecture.bsg import UNet
+from BEA.network_architecture.neural_network import SegmentationNetwork
 
 
 class U_ResTran3D(nn.Module):

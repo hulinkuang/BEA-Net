@@ -10,7 +10,7 @@ from medpy.metric.binary import dc
 from pathlib import Path
 from torch.utils.data import DataLoader
 from collections import OrderedDict
-from BSG.network_architecture.ResTranUnet import ResTranUnet
+from BEA.network_architecture.ResTranUnet import ResTranUnet
 from dataset import ISIC
 
 

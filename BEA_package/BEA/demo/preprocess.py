@@ -38,7 +38,7 @@ def convert_2d_image_to_nifti(img: np.ndarray, output_name: str, spacing=(999, 1
             sitk.WriteImage(itk_img, output_name + ".nii.gz")
 
 
-output_folder = Path("/home/kuanghl/Codes/BSG/nnUNet/nnU_data/nnUNet_raw_data_base/nnUNet_raw_data/Task026_ISIC")
+output_folder = Path("/homeb/wyh/Codes/BEA-Net/nnUNet/nnU_data/nnUNet_raw_data_base/nnUNet_raw_data/Task026_ISIC")
 
 
 def preprocess():
@@ -68,7 +68,7 @@ def preprocess():
                                   transform=lambda x: (x > 0).astype(int))
 
     json_dict = OrderedDict()
-    json_dict['name'] = "Kvasir"
+    json_dict['name'] = "ISIC2018"
     json_dict['description'] = ""
     json_dict['tensorImageSize'] = "4D"
     json_dict['reference'] = "see challenge website"
@@ -104,8 +104,8 @@ def preprocess():
 
     splits_path = join(output_folder, "splits_final.pkl")
     save_pickle(splits, splits_path)
-    task = convert_id_to_task_name(26)
+    task = 'Task026_ISIC'
     os.system(
-        '/home/kuanghl/anaconda3/envs/BSG/bin/python -u /home/kuanghl/Codes/BSG/nnUNet/nnunet/experiment_planning/nnUNet_plan_and_preprocess.py -t 26 ')
+        '/home/wyh/anaconda3/envs/BSG/bin/python -u /homeb/wyh/Codes/BEA-Net/nnUNet/nnunet/experiment_planning/nnUNet_plan_and_preprocess.py -t 26 ')
     dst = join(preprocessing_output_dir, task)
     shutil.copy(splits_path, dst)

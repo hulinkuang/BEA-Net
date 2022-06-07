@@ -1,4 +1,4 @@
-import BSG
+import BEA
 import torch
 from batchgenerators.utilities.file_and_folder_operations import *
 import importlib
@@ -32,7 +32,7 @@ def restore_model(pkl_file, checkpoint=None, train=False, fp16=None):
     info = load_pickle(pkl_file)
     init = info['init']
     name = info['name']
-    search_in = join(BSG.__path__[0], "training", "network_training")
+    search_in = join(BEA.__path__[0], "training", "network_training")
     tr = recursive_find_python_class([search_in], name, current_module="CoTr.training.network_training")
 
     if tr is None:
