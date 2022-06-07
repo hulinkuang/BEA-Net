@@ -107,9 +107,9 @@ def main():
 
     if args.disable_saving:
         trainer.save_latest_only = False  # if false it will not store/overwrite _latest but separate files each
-        trainer.save_intermediate_checkpoints = False  # whether or not to save checkpoint_latest
+        trainer.save_intermediate_checkpoints = False  # whether to save checkpoint_latest
         trainer.save_best_checkpoint = False  # whether or not to save the best checkpoint according to self.best_val_eval_criterion_MA
-        trainer.save_final_checkpoint = False  # whether or not to save the final checkpoint
+        trainer.save_final_checkpoint = False  # whether to save the final checkpoint
 
     trainer.initialize(not validation_only)
 
