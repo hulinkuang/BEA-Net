@@ -1,5 +1,5 @@
-# BEG-SegNet
-The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEG-SegNet: Medical Image Segmentation Network with Body and Edge Generation"
+# BEA-SegNet
+The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEA-SegNet: Medical Image Segmentation Network with Body and Edge Generation"
 ## Requirements
 CUDA 11.4<br />
 Python 3.8.12<br /> 
@@ -13,26 +13,25 @@ kornia 0.6.4 <br />
 ## Usage
 
 ### 0. Installation
-* Install nnUNet and BSG as below
+* Install nnUNet and BEA as below
   
 ```
 cd nnUNet
 pip install -e .
 
-cd BSG_package
+cd BEA_package
 pip install -e .
 ```
 
-### 1. Training 
-cd BSG_package/BSG/run
+### 1. Training
 
-* Run `python run_training.py -gpu='0' -outpath='BSG'` for training.
+* Run `BEA_train -gpu='0' -task={task_id} -outpath='BEA'` for training.
 
 ### 2. Testing 
-* Run `python run_training.py -gpu='0' -outpath='BSG' -val --val_folder='validation_output'` for validation.
+* Run `BEA_train -gpu='0' -task={task_id} -outpath='BEA' -val --val_folder='validation_output'` for validation.
 
 # Datasets
-ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018). There is an example to process raw data in ./BSG-package/BSG/demo/turial.py.
+ISIC2018 dataset for skin lesion segmentation from (https://challenge.isic-archive.com/data/#2018). There is an example to process raw data in ./BEA-package/BEA/demo/turial.py.
 
 For other datasets, the preprocess files can be found at nnUNet/nnunet/dataset_conversion. All pre-trained model can be download from [[Baidu YUN]](https://pan.baidu.com/s/1o9pKTCzsJW6CzCxFTZ8DTg) with the password "7uvl".
 
