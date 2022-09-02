@@ -1,5 +1,5 @@
 # BEA-Net
-The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper submitted to IEEE TMI "BEA-Net: Body and Edge Aware Network with Multi-Scale Short-Term Concatenation for Medical Image Segmentation" <br />
+The code for the BIBM2021 paper "BEA-SegNet: Body and Edge Aware Network for Medical Image Segmentation" and the extension paper "BEA-Net: Body and Edge Aware Network with Multi-Scale Short-Term Concatenation for Medical Image Segmentation" <br />
 This paper proposes a new network with body and edge generation modules, multi-scale short-term concatenation, parallel body and edge decoders and their fusion, and body and edge supervision. It outperform several state-of-the-arts on six datasets for six different medical image segmentation tasks.
 ![framework](https://user-images.githubusercontent.com/35280235/172337360-34553fff-ed5c-4e72-90e0-f92bceff9d37.jpg)
 
