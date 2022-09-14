@@ -122,16 +122,40 @@ class Edge(nn.Module):
                                        norm_cfg=norm_cfg, activation_cfg=activation_cfg)
         self.layer = layer
 
-    @staticmethod
-    def sobel_edge(image):
-        B, C, H, W = image.shape
-        kernels = [[[-1, -2, -1], [0, 0, 0], [1, 2, 1]],
-                   [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]]
-        kernels = torch.tensor(kernels)[:, None, None].repeat(1, C, 1, 1, 1).type_as(image).to(image.device)
-        sobel_x = F.conv2d(image, kernels[0], stride=1, padding=1, groups=C)
-        sobel_y = F.conv2d(image, kernels[1], stride=1, padding=1, groups=C)
+        # kernel_x = torch.tensor([[-1.0, 0.0, 1.0], [-2.0, 0.0, 2.0], [-1.0, 0.0, 1.0]])
+        # kernel_y = kernel_x.transpose(0, 1)
+        # kernel = torch.stack([kernel_x, kernel_y])
+        # self.kernel = nn.Parameter(kernel)
 
-        return sobel_x, sobel_y
+    def sobel_edge(self, image):
+        kernel = Edge.normalize_kernel2d(self.kernel)
+
+        b, c, h, w = image.shape
+        tmp_kernel: torch.Tensor = kernel
+        tmp_kernel = tmp_kernel.unsqueeze(1).unsqueeze(1)
+        kernel_flip: torch.Tensor = tmp_kernel.flip(-3)
+
+        spatial_pad = [kernel.size(1) // 2, kernel.size(1) // 2, kernel.size(2) // 2, kernel.size(2) // 2]
+        out_channels = 2
+        padded_inp: torch.Tensor = F.pad(image.reshape(b * c, 1, h, w), spatial_pad, 'replicate')[:, :, None]
+
+        edges = F.conv3d(padded_inp, kernel_flip, padding=0).view(b, c, out_channels, h, w)
+
+        gx: torch.Tensor = edges[:, :, 0]
+        gy: torch.Tensor = edges[:, :, 1]
+
+        # compute gradient maginitude
+        magnitude: torch.Tensor = torch.sqrt(gx * gx + gy * gy + 1e-6)
+
+        return magnitude
+
+    @staticmethod
+    def normalize_kernel2d(input: torch.Tensor) -> torch.Tensor:
+        r"""Normalize both derivative and smoothing kernel."""
+        if len(input.size()) < 2:
+            raise TypeError(f"input should be at least 2D tensor. Got {input.size()}")
+        norm: torch.Tensor = input.abs().sum(dim=-1).sum(dim=-1)
+        return input / (norm.unsqueeze(-1).unsqueeze(-1))
 
     def forward(self, x):
         seg_edge0 = K.filters.sobel(x)
@@ -152,8 +176,8 @@ class Edge(nn.Module):
 
         seg_edge = self.conv(seg_edge)
         return seg_edge
-    
-    
+
+
 class Upsample(nn.Module):
     def __init__(self, channels):
         super(Upsample, self).__init__()
@@ -167,14 +191,14 @@ class Upsample(nn.Module):
 
 
 class UNet(nn.Module):
-    def __init__(self, in_channels=3, num_classes=2, base_num_features=32, n_layer=5, convolutional_upsampling=False,
+    def __init__(self, in_channels=3, num_classes=2, base_num_features=32, n_layer=5, convolutional_upsampling=True,
                  norm_cfg='IN', activation_cfg='LeakyReLU'):
         super(UNet, self).__init__()
 
         encoder = []
         in_features = in_channels
         out_features = base_num_features
-        for i in range(n_layer-1):
+        for i in range(n_layer - 1):
             if i == 0:
                 encoder.append(
                     nn.Sequential(
@@ -185,7 +209,6 @@ class UNet(nn.Module):
             elif i < 2:
                 encoder.append(
                     nn.Sequential(
-                        # PoolingConv(in_features, in_features, norm_cfg=norm_cfg, activation_cfg=activation_cfg),
                         ConvNormNonlin(in_features, out_features, stride=2, norm_cfg=norm_cfg, activation_cfg=activation_cfg),
                         ConvNormNonlin(out_features, out_features, norm_cfg=norm_cfg, activation_cfg=activation_cfg),
                     )
@@ -213,7 +236,7 @@ class UNet(nn.Module):
         up = []
         up_edge = []
         de = []
-        for i in range(n_layer-1):
+        for i in range(n_layer - 1):
             if not convolutional_upsampling:
                 up.append(Upsample(out_features))
                 up_edge.append(Upsample(out_features))
@@ -282,12 +305,12 @@ class UNet(nn.Module):
 
         body = self.body[-1](features[-1])
         d_edge = self.edge[-1](features[-1])
-        for i in range(self.n_layer-1):
+        for i in range(self.n_layer - 1):
             x = self.up[i](body)
             x = torch.cat([features[-(i + 2)], x], dim=1)
             x = self.decoder[i](x)
-            body = self.body[-(i+2)](x)
-            edge = self.edge[-(i+2)](x)
+            body = self.body[-(i + 2)](x)
+            edge = self.edge[-(i + 2)](x)
             d_edge = self.up_edge[i](d_edge)
             d_edge = torch.cat([edge, d_edge], dim=1)
             d_edge = self.de[i](d_edge)

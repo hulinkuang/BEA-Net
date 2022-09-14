@@ -34,6 +34,7 @@ class nnUNetTrainerV2_ResTrans(nnUNetTrainer):
                          deterministic, fp16)
         self.max_num_epochs = 80
         self.initial_lr = 2e-2
+        self.weight_decay = 3e-5
         self.deep_supervision_scales = None
         self.ds_loss_weights = None
 
@@ -235,7 +236,9 @@ class nnUNetTrainerV2_ResTrans(nnUNetTrainer):
                 l.backward()
                 torch.nn.utils.clip_grad_norm_(self.network.parameters(), 12)
                 self.optimizer.step()
-
+        # for i in range(5):
+        #     self.network.U_ResTran3D.backbone.edge._modules[str(i)].kernel.data[0, :, 1] = 0
+        #     self.network.U_ResTran3D.backbone.edge._modules[str(i)].kernel.data[1, 1, :] = 0
         if run_online_evaluation:
             self.run_online_evaluation(output, target)
 

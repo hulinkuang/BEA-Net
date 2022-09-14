@@ -389,6 +389,8 @@ ALL_METRICS = {
     "Jaccard": jaccard,
     "Hausdorff Distance": hausdorff_distance,
     "Hausdorff Distance 95": hausdorff_distance_95,
+    "Sensitivity": sensitivity,
+    "Specificity": specificity,
     "Precision": precision,
     "Recall": recall,
     "Avg. Symmetric Surface Distance": avg_surface_distance_symmetric,

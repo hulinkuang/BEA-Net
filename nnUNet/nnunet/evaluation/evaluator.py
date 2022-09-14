@@ -14,6 +14,7 @@
 
 
 import collections
+import copy
 import inspect
 import json
 import hashlib
@@ -35,19 +36,14 @@ class Evaluator:
     """
 
     default_metrics = [
-        "False Positive Rate",
         "Dice",
+        "Hausdorff Distance 95",
         "Jaccard",
         "Precision",
-        "Recall",
         "Accuracy",
-        "False Omission Rate",
-        "Negative Predictive Value",
-        "False Negative Rate",
-        "True Negative Rate",
-        "False Discovery Rate",
-        "Total Positives Test",
-        "Total Positives Reference"
+        "Sensitivity",
+        "Specificity",
+        "Avg. Symmetric Surface Distance"
     ]
 
     default_advanced_metrics = [
@@ -374,13 +370,15 @@ def aggregate_scores(test_ref_pairs,
                 if score not in all_scores["mean"][label]:
                     all_scores["mean"][label][score] = []
                 all_scores["mean"][label][score].append(value)
-
+    all_scores['std'] = copy.deepcopy(all_scores['mean'])
     for label in all_scores["mean"]:
         for score in all_scores["mean"][label]:
             if nanmean:
                 all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))
+                all_scores["std"][label][score] = float(np.nanstd(all_scores["std"][label][score]))
             else:
                 all_scores["mean"][label][score] = float(np.mean(all_scores["mean"][label][score]))
+                all_scores["std"][label][score] = float(np.std(all_scores["std"][label][score]))
 
     # save to file if desired
     # we create a hopefully unique id by hashing the entire output dictionary
