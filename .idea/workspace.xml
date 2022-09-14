@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d532f44-d755-495b-b378-07794061cc75" name="Changes" comment="modify MIA" />
+    <list default="true" id="4d532f44-d755-495b-b378-07794061cc75" name="Changes" comment="modify MIA">
+      <change beforePath="$PROJECT_DIR$/BEA_package/BEA/run/run_training.py" beforeDir="false" afterPath="$PROJECT_DIR$/BEA_package/BEA/run/run_training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BEA_package/BEA/training/network_training/nnUNetTrainerV2_ResTrans.py" beforeDir="false" afterPath="$PROJECT_DIR$/BEA_package/BEA/training/network_training/nnUNetTrainerV2_ResTrans.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +205,7 @@
       <workItem from="1661664357144" duration="7580000" />
       <workItem from="1661755123958" duration="33748000" />
       <workItem from="1662084080012" duration="15372000" />
-      <workItem from="1663146084826" duration="771000" />
+      <workItem from="1663146084826" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="modify">
       <created>1654569737332</created>
@@ -232,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663146671970</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="modify MIA">
+      <created>1663147140298</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663147140298</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +280,6 @@
     <SUITE FILE_PATH="coverage/BEA_Net$nnUNetTrainerV2_ResTrans.coverage" NAME="nnUNetTrainerV2_ResTrans Coverage Results" MODIFIED="1661824090981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BEA_package/BEA/training/network_training" />
     <SUITE FILE_PATH="coverage/BEA_Net$change_batch_size.coverage" NAME="change_batch_size Coverage Results" MODIFIED="1661845711186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nnUNet/nnunet/experiment_planning" />
     <SUITE FILE_PATH="coverage/BEA_Net$bsg.coverage" NAME="bsg Coverage Results" MODIFIED="1662379211724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BEA_package/BEA/network_architecture" />
-    <SUITE FILE_PATH="coverage/BEA_Net$run_training.coverage" NAME="run_training Coverage Results" MODIFIED="1662432735845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BEA_package/BEA/run" />
+    <SUITE FILE_PATH="coverage/BEA_Net$run_training.coverage" NAME="run_training Coverage Results" MODIFIED="1663147281926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BEA_package/BEA/run" />
   </component>
 </project>

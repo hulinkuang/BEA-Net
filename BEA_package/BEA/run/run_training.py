@@ -36,7 +36,7 @@ def main():
                         help="If you set use_compressed_data, the training cases will not be decompressed. Reading compressed data "
                              "is much more CPU and RAM intensive and should only be used if you know what you are "
                              "doing", required=False)
-    parser.add_argument("--deterministic", default=True, action="store_true")
+    parser.add_argument("--deterministic", default=False, action="store_true")
     parser.add_argument("--npz", required=False, default=False, action="store_true", help="if set then nnUNet will "
                                                                                           "export npz files of "
                                                                                           "predicted segmentations "

@@ -258,7 +258,7 @@ class nnUNetTrainerV2_ResTrans(nnUNetTrainer):
         splits = load_pickle(splits_file)
 
         tr_keys = splits[0]['train']
-        val_keys = splits[0]['test']
+        val_keys = splits[0]['val']  # val for train, test for test.
 
         tr_keys.sort()
         val_keys.sort()
