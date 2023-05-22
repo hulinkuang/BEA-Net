@@ -32,7 +32,7 @@ class nnUNetTrainerV2_ResTrans(nnUNetTrainer):
                  unpack_data=True, deterministic=True, fp16=False):
         super().__init__(plans_file, fold, output_folder, dataset_directory, batch_dice, stage, unpack_data,
                          deterministic, fp16)
-        self.max_num_epochs = 80
+        self.max_num_epochs = 250
         self.initial_lr = 2e-2
         self.weight_decay = 3e-5
         self.deep_supervision_scales = None
@@ -44,6 +44,10 @@ class nnUNetTrainerV2_ResTrans(nnUNetTrainer):
         self.pin_memory = True
 
         self.save_best_checkpoint = True
+
+        self.w1 = 1
+        self.w2 = 0.2
+        self.w3 = 0.1
 
     def initialize(self, training=True, force_load_plans=False):
         """
@@ -73,7 +77,7 @@ class nnUNetTrainerV2_ResTrans(nnUNetTrainer):
 
             ################# Here we wrap the loss for deep supervision ############
 
-            self.loss = NewLoss(loss=self.loss)
+            self.loss = NewLoss(loss=self.loss, w1=self.w1, w2=self.w2, w3=self.w3)
             ################# END ###################
 
             self.folder_with_preprocessed_data = join(self.dataset_directory, self.plans['data_identifier'] +

@@ -2,6 +2,7 @@ import torch
 import kornia as K
 import torch.nn as nn
 import torch.nn.functional as F
+import matplotlib.pyplot as plt
 from nnunet.network_architecture.initialization import InitWeights_He
 
 
@@ -35,6 +36,7 @@ class ConvNormNonlin(nn.Module):
         self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding, groups=groups)
         self.norm = Norm_layer(norm_cfg, out_channels)
         self.nonlin = Activation_layer(activation_cfg)
+        self.dropout = nn.Dropout2d(p=0.3)
 
     def forward(self, x):
         x = self.nonlin(self.norm(self.conv(x)))
@@ -55,23 +57,42 @@ class PoolingConv(nn.Module):
         return self.max_pool(x)
 
 
+# class MultiScaleConv2(nn.Module):
+#     def __init__(self, in_channels, out_channels, norm_cfg='IN', activation_cfg='LeakyReLU'):
+#         super().__init__()
+#         self.conv1 = ConvNormNonlin(in_channels, in_channels // 2, kernel_size=1, stride=1, padding=0,
+#                                     norm_cfg=norm_cfg, activation_cfg=activation_cfg)
+#         self.conv2 = ConvNormNonlin(in_channels, in_channels // 4, norm_cfg=norm_cfg, activation_cfg=activation_cfg)
+#         self.conv3 = ConvNormNonlin(in_channels, in_channels // 4, norm_cfg=norm_cfg, activation_cfg=activation_cfg)
+#         self.out_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1)
+#         self.nonlin = Activation_layer(activation_cfg)
+#
+#     def forward(self, x):
+#         x1 = self.conv1(x)
+#         x2 = self.conv2(x)
+#         x3 = self.conv3(x)
+#         x = torch.cat([x1, x2, x3], dim=1)
+#         x = self.out_conv(x)
+#         x = self.nonlin(x)
+#
+#         return x
+
+
 class MultiScaleConv(nn.Module):
     def __init__(self, in_channels, out_channels, norm_cfg='IN', activation_cfg='LeakyReLU'):
-        super(MultiScaleConv, self).__init__()
-        self.conv1 = ConvNormNonlin(in_channels, in_channels // 2, kernel_size=1, stride=1, padding=0,
+        super().__init__()
+        self.conv1 = ConvNormNonlin(in_channels, out_channels // 2, kernel_size=1, stride=1, padding=0,
                                     norm_cfg=norm_cfg, activation_cfg=activation_cfg)
-        self.conv2 = ConvNormNonlin(in_channels, in_channels // 4, norm_cfg=norm_cfg, activation_cfg=activation_cfg)
-        self.conv3 = ConvNormNonlin(in_channels, in_channels // 4, norm_cfg=norm_cfg, activation_cfg=activation_cfg)
-        self.out_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1)
-        self.nonlin = Activation_layer(activation_cfg)
+        self.conv2 = ConvNormNonlin(out_channels // 2, out_channels // 4,
+                                    norm_cfg=norm_cfg, activation_cfg=activation_cfg)
+        self.conv3 = ConvNormNonlin(out_channels // 4, out_channels // 4,
+                                    norm_cfg=norm_cfg, activation_cfg=activation_cfg)
 
     def forward(self, x):
         x1 = self.conv1(x)
-        x2 = self.conv2(x)
-        x3 = self.conv3(x)
+        x2 = self.conv2(x1)
+        x3 = self.conv3(x2)
         x = torch.cat([x1, x2, x3], dim=1)
-        x = self.out_conv(x)
-        x = self.nonlin(x)
 
         return x
 
@@ -323,8 +344,8 @@ class UNet(nn.Module):
 
 
 if __name__ == '__main__':
-    x = torch.randn(2, 3, 256, 256).cuda()
-    model = UNet(n_layer=5, convolutional_upsampling=True).cuda()
+    x = torch.randn(2, 3, 256, 256).cuda(1)
+    model = UNet(n_layer=5, convolutional_upsampling=True, base_num_features=32).cuda(1)
     total = sum([param.nelement() for param in model.parameters()])
     print(total / 1e6)
     outs = model(x)

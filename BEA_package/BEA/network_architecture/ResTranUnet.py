@@ -20,6 +20,8 @@ class U_ResTran3D(nn.Module):
         # # %%%%%%%%%%%%% Body-Edge Segmentation Network
         B, C, D, H, W = inputs.shape
         x = inputs.squeeze(2)
+        if x.shape[1] == 1:
+            x = x.repeat(1, 3, 1, 1)
         # x = F.interpolate(x, size=(256, 256), mode='bilinear')
         x = self.backbone(x)
         # x = [F.interpolate(i, size=(H, W), mode='bilinear') for i in x]

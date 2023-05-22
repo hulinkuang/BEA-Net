@@ -50,7 +50,7 @@ class MultipleOutputLoss2(nn.Module):
     
 
 class NewLoss(nn.Module):
-    def __init__(self, w1=1, w2=0.2, w3=0.1, loss=None):
+    def __init__(self, w1=1, w2=0.1, w3=0.08, loss=None):
         super(NewLoss, self).__init__()
         self.dc = GDiceLoss(softmax_helper)
         self.ce = WeightedCrossEntropyLoss()
