@@ -37,7 +37,7 @@ ISIC2018 dataset for skin lesion segmentation can be downloaded from (https://ch
 * Run `BEA_train -gpu='0' -task={task_id} -outpath='BEA' -val --val_folder='validation_output'` for testing. 
 
 ### 1.4 Testing demo with pre-trained model
-The pre-trained model using ISIC2018 can be download from [[Baidu YUN]](https://pan.baidu.com/s/1o9pKTCzsJW6CzCxFTZ8DTg) with the password "7uvl". We give a testing demo which can segment raw images with skin lesions and is implemented via running ./BEA-package/BEA/demo/turial.py.
+The pre-trained model using ISIC2018 can be download from [[Baidu YUN]](https://pan.baidu.com/s/1EsS5L7GJfND6E2XLX_H_Pw?pwd=xfi5) with the password "xfi5". We give a testing demo which can segment raw images with skin lesions and is implemented via running ./BEA-package/BEA/demo/turial.py.
 
 ### 2 Medical segmentation on other five datasets
 ### Dataset access
@@ -49,8 +49,6 @@ JSRT: http://db.jsrt.or.jp/eng.php <br />
 
 ### 2.1 pre-processing, training and testing
 To pre-process the datasets, please use the corresponding preprocess codes in nnUNet/nnunet/dataset_conversion. the training and testing for other datasets are similar.
-### 2.2 pre-trained model
-All pre-trained models on the other five datasets also can be download from [[Baidu YUN]](https://pan.baidu.com/s/1o9pKTCzsJW6CzCxFTZ8DTg) with the password "7uvl".
 
 ## Acknowledgements
 Part of codes are reused from the nnU-Net. Thanks to Fabian Isensee for the codes of nnU-Net.
